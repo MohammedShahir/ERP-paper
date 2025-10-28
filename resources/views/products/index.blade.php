@@ -3,7 +3,8 @@
 @section('content')
     <div class="flex items-center justify-between mb-4">
         <h1 class="text-xl font-semibold">{{ __('messages.product.title') }}</h1>
-        <a href="{{ route('products.create') }}" class="px-3 py-2 rounded bg-[#1b1b18] text-white hover:bg-black">{{ __('messages.actions.add_product') }}</a>
+        <a href="{{ route('products.create') }}"
+            class="px-3 py-2 rounded bg-[#1b1b18] text-white hover:bg-black">{{ __('messages.actions.add_product') }}</a>
     </div>
 
     <div class="rounded border border-[#e3e3e0] bg-white overflow-hidden">
@@ -33,10 +34,12 @@
                             @endif
                         </td>
                         <td class="p-3 text-right space-x-2">
-                            <a href="{{ route('products.edit', $p) }}" class="text-[#f53003] underline">{{ __('messages.actions.edit') }}</a>
+                            <a href="{{ route('products.edit', $p) }}"
+                                class="text-[#f53003] underline">{{ __('messages.actions.edit') }}</a>
                             <form action="{{ route('products.destroy', $p) }}" method="POST" class="inline">
                                 @csrf @method('DELETE')
-                                <button class="text-[#f53003] underline" onclick="return confirm('{{ __('messages.actions.confirm_delete') }}')">{{ __('messages.actions.delete') }}</button>
+                                <button class="text-[#f53003] underline"
+                                    onclick="return confirm('{{ __('messages.actions.confirm_delete') }}')">{{ __('messages.actions.delete') }}</button>
                             </form>
                         </td>
                     </tr>

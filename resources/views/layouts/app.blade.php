@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 @php($isRtl = app()->getLocale() === 'ar')
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ $isRtl ? 'rtl' : 'ltr' }}" x-data="{ sidebar: true }" class="h-full">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ $isRtl ? 'rtl' : 'ltr' }}" x-data="{ sidebar: true }"
+    class="h-full">
 
 <head>
     <meta charset="utf-8">
@@ -17,20 +18,33 @@
             <div class="text-xl font-semibold">{{ __('messages.app_name') }}</div>
             <nav class="mt-4 space-y-1">
                 <div class="text-xs uppercase text-[#706f6c] px-3">{{ __('messages.general.general') }}</div>
-                <a href="{{ route('dashboard') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.dashboard') }}</a>
-                <a href="{{ route('products.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.products') }}</a>
-                <a href="{{ route('customers.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.customers') }}</a>
-                <div class="text-xs uppercase text-[#706f6c] px-3 mt-4">{{ __('messages.general.sales_department') }}</div>
-                <a href="{{ route('sales.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.sales') }}</a>
-                <div class="text-xs uppercase text-[#706f6c] px-3 mt-4">{{ __('messages.general.procurement_department') }}</div>
-                <a href="{{ route('purchases.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.purchases') }}</a>
-                <div class="text-xs uppercase text-[#706f6c] px-3 mt-4">{{ __('messages.general.warehouse_department') }}</div>
-                <a href="{{ route('transfers.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.transfers') }}</a>
+                <a href="{{ route('dashboard') }}"
+                    class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.dashboard') }}</a>
+                <a href="{{ route('products.index') }}"
+                    class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.products') }}</a>
+                <a href="{{ route('customers.index') }}"
+                    class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.customers') }}</a>
+                <div class="text-xs uppercase text-[#706f6c] px-3 mt-4">{{ __('messages.general.sales_department') }}
+                </div>
+                <a href="{{ route('sales.index') }}"
+                    class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.sales') }}</a>
+                <div class="text-xs uppercase text-[#706f6c] px-3 mt-4">
+                    {{ __('messages.general.procurement_department') }}</div>
+                <a href="{{ route('purchases.index') }}"
+                    class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.purchases') }}</a>
+                <div class="text-xs uppercase text-[#706f6c] px-3 mt-4">
+                    {{ __('messages.general.warehouse_department') }}</div>
+                <a href="{{ route('transfers.index') }}"
+                    class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.transfers') }}</a>
                 <div class="text-xs uppercase text-[#706f6c] px-3 mt-4">{{ __('messages.general.accounting') }}</div>
-                <a href="{{ route('accounting.pl') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.pl') }}</a>
-                <a href="{{ route('accounting.entries.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.journal_entries') }}</a>
-                <div class="text-xs uppercase text-[#706f6c] px-3 mt-4">{{ __('messages.general.administration') }}</div>
-                <a href="{{ route('branches.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.branches') }}</a>
+                <a href="{{ route('accounting.pl') }}"
+                    class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.pl') }}</a>
+                <a href="{{ route('accounting.entries.index') }}"
+                    class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.journal_entries') }}</a>
+                <div class="text-xs uppercase text-[#706f6c] px-3 mt-4">{{ __('messages.general.administration') }}
+                </div>
+                <a href="{{ route('branches.index') }}"
+                    class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.branches') }}</a>
             </nav>
         </aside>
         <div class="flex-1">
@@ -55,7 +69,8 @@
                         </form>
                         <form action="{{ route('locale.switch') }}" method="POST">
                             @csrf
-                            <input type="hidden" name="locale" value="{{ app()->getLocale() === 'ar' ? 'en' : 'ar' }}" />
+                            <input type="hidden" name="locale"
+                                value="{{ app()->getLocale() === 'ar' ? 'en' : 'ar' }}" />
                             <button class="px-2 py-1 text-sm border rounded hover:bg-[#fff2f2]">
                                 {{ app()->getLocale() === 'ar' ? __('messages.actions.english') : __('messages.actions.arabic') }}
                             </button>
@@ -65,15 +80,24 @@
             </header>
             <div class="md:hidden" x-show="sidebar" x-transition>
                 <nav class="bg-white border-b border-[#e3e3e0] p-2 space-y-1">
-                    <a href="{{ route('dashboard') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.dashboard') }}</a>
-                    <a href="{{ route('products.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.products') }}</a>
-                    <a href="{{ route('customers.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.customers') }}</a>
-                    <a href="{{ route('sales.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.sales') }}</a>
-                    <a href="{{ route('purchases.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.purchases') }}</a>
-                    <a href="{{ route('transfers.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.transfers') }}</a>
-                    <a href="{{ route('accounting.pl') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.pl') }}</a>
-                    <a href="{{ route('accounting.entries.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.journal_entries') }}</a>
-                    <a href="{{ route('branches.index') }}" class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.branches') }}</a>
+                    <a href="{{ route('dashboard') }}"
+                        class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.dashboard') }}</a>
+                    <a href="{{ route('products.index') }}"
+                        class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.products') }}</a>
+                    <a href="{{ route('customers.index') }}"
+                        class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.customers') }}</a>
+                    <a href="{{ route('sales.index') }}"
+                        class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.sales') }}</a>
+                    <a href="{{ route('purchases.index') }}"
+                        class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.purchases') }}</a>
+                    <a href="{{ route('transfers.index') }}"
+                        class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.transfers') }}</a>
+                    <a href="{{ route('accounting.pl') }}"
+                        class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.pl') }}</a>
+                    <a href="{{ route('accounting.entries.index') }}"
+                        class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.journal_entries') }}</a>
+                    <a href="{{ route('branches.index') }}"
+                        class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.branches') }}</a>
                 </nav>
             </div>
 
