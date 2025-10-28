@@ -1,0 +1,3 @@
+# Require review from code owners (enable in Branch Protection)
+# Replace @your-github-username with your real GitHub handle.
+*       @your-github-username
