@@ -11,6 +11,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\StockTransferController;
 use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\JournalEntryController;
+use App\Http\Controllers\LocaleController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -38,3 +39,6 @@ Route::get('accounting/pl', [AccountingController::class, 'profitAndLoss'])->nam
 Route::get('accounting/entries', [JournalEntryController::class, 'index'])->name('accounting.entries.index');
 Route::get('accounting/entries/create', [JournalEntryController::class, 'create'])->name('accounting.entries.create');
 Route::post('accounting/entries', [JournalEntryController::class, 'store'])->name('accounting.entries.store');
+
+// Locale switch
+Route::post('locale/switch', [LocaleController::class, 'update'])->name('locale.switch');
