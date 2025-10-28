@@ -12,6 +12,9 @@ use App\Http\Controllers\StockTransferController;
 use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\JournalEntryController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\CashierController;
+use App\Http\Controllers\CashVoucherController;
+use App\Http\Controllers\CashierStatementController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -39,6 +42,13 @@ Route::get('accounting/pl', [AccountingController::class, 'profitAndLoss'])->nam
 Route::get('accounting/entries', [JournalEntryController::class, 'index'])->name('accounting.entries.index');
 Route::get('accounting/entries/create', [JournalEntryController::class, 'create'])->name('accounting.entries.create');
 Route::post('accounting/entries', [JournalEntryController::class, 'store'])->name('accounting.entries.store');
+
+// Cashiers & Vouchers
+Route::resource('cashiers', CashierController::class)->except(['show']);
+Route::get('cashiers/{cashier}/statement', [CashierStatementController::class, 'show'])->name('cashiers.statement');
+Route::get('vouchers', [CashVoucherController::class, 'index'])->name('vouchers.index');
+Route::get('vouchers/create', [CashVoucherController::class, 'create'])->name('vouchers.create');
+Route::post('vouchers', [CashVoucherController::class, 'store'])->name('vouchers.store');
 
 // Locale switch
 Route::post('locale/switch', [LocaleController::class, 'update'])->name('locale.switch');

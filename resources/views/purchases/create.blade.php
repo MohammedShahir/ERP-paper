@@ -1,20 +1,20 @@
 @extends('layouts.app')
-@section('title', 'New Purchase')
+@section('title', __('messages.purchase.new'))
 @section('content')
-    <h1 class="text-xl font-semibold mb-4">New Purchase</h1>
+    <h1 class="text-xl font-semibold mb-4">{{ __('messages.purchase.new') }}</h1>
     <form action="{{ route('purchases.store') }}" method="POST" x-data="purchaseForm()" class="space-y-4">@csrf
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl">
             <div>
-                <label class="block text-sm mb-1">Supplier</label>
+                <label class="block text-sm mb-1">{{ __('messages.general.supplier') }}</label>
                 <select name="supplier_id" class="w-full rounded border p-2">
-                    <option value="">-- None --</option>
+                    <option value="">-- {{ __('messages.general.none') }} --</option>
                     @foreach ($suppliers as $s)
                         <option value="{{ $s->id }}">{{ $s->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div>
-                <label class="block text-sm mb-1">Branch</label>
+                <label class="block text-sm mb-1">{{ __('messages.general.branch') }}</label>
                 <select name="branch_id" class="w-full rounded border p-2" required>
                     @foreach ($branches as $b)
                         <option value="{{ $b->id }}" @selected(session('branch_id') == $b->id)>{{ $b->name }}</option>
@@ -22,7 +22,7 @@
                 </select>
             </div>
             <div>
-                <label class="block text-sm mb-1">Date</label>
+                <label class="block text-sm mb-1">{{ __('messages.general.date') }}</label>
                 <input type="date" name="date" value="{{ now()->toDateString() }}" class="w-full rounded border p-2"
                     required>
             </div>
@@ -32,10 +32,10 @@
             <table class="w-full text-sm">
                 <thead class="text-left text-[#706f6c]">
                     <tr>
-                        <th class="p-2">Product</th>
-                        <th class="p-2 w-28">Qty</th>
-                        <th class="p-2 w-32">Unit Cost</th>
-                        <th class="p-2 w-32">Line Total</th>
+                        <th class="p-2">{{ __('messages.general.product') }}</th>
+                        <th class="p-2 w-28">{{ __('messages.general.qty') }}</th>
+                        <th class="p-2 w-32">{{ __('messages.general.unit_cost') }}</th>
+                        <th class="p-2 w-32">{{ __('messages.general.line_total') }}</th>
                         <th class="p-2 w-10"></th>
                     </tr>
                 </thead>
@@ -45,7 +45,7 @@
                             <td class="p-2">
                                 <select :name="`items[${idx}][product_id]`" class="w-full rounded border p-2"
                                     x-model.number="it.product_id">
-                                    <option value="">-- Select --</option>
+                                    <option value="">-- {{ __('messages.general.select') }} --</option>
                                     @foreach ($products as $p)
                                         <option value="{{ $p->id }}">{{ $p->name }} ({{ $p->sku }})
                                         </option>
@@ -59,24 +59,26 @@
                                     :name="`items[${idx}][unit_cost]`"></td>
                             <td class="p-2">$<span x-text="(it.quantity*it.unit_cost).toFixed(2)"></span></td>
                             <td class="p-2 text-right"><button type="button" class="text-[#f53003] underline"
-                                    @click="remove(idx)">Remove</button></td>
+                                    @click="remove(idx)">{{ __('messages.actions.remove') }}</button></td>
                         </tr>
                     </template>
                 </tbody>
             </table>
-            <div class="p-3"><button type="button" class="px-3 py-2 rounded border" @click="add()">Add Item</button>
+            <div class="p-3"><button type="button" class="px-3 py-2 rounded border"
+                    @click="add()">{{ __('messages.actions.add_item') }}</button>
             </div>
         </div>
 
         <div class="max-w-5xl flex items-center justify-end gap-6 text-sm">
-            <div>Subtotal: $<span x-text="subtotal().toFixed(2)"></span></div>
-            <div>Tax: $<span x-text="tax().toFixed(2)"></span></div>
-            <div class="font-semibold">Total: $<span x-text="total().toFixed(2)"></span></div>
+            <div>{{ __('messages.general.subtotal') }}: $<span x-text="subtotal().toFixed(2)"></span></div>
+            <div>{{ __('messages.general.tax') }}: $<span x-text="tax().toFixed(2)"></span></div>
+            <div class="font-semibold">{{ __('messages.general.total') }}: $<span x-text="total().toFixed(2)"></span></div>
         </div>
 
         <div class="max-w-5xl flex items-center gap-2">
-            <a href="{{ route('purchases.index') }}" class="px-3 py-2 rounded border">Cancel</a>
-            <button class="px-3 py-2 rounded bg-[#1b1b18] text-white">Save Purchase</button>
+            <a href="{{ route('purchases.index') }}"
+                class="px-3 py-2 rounded border">{{ __('messages.actions.cancel') }}</a>
+            <button class="px-3 py-2 rounded bg-[#1b1b18] text-white">{{ __('messages.actions.save_purchase') }}</button>
         </div>
     </form>
 

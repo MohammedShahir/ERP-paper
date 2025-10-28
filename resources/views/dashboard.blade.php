@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', __('messages.general.dashboard'))
 
 @section('content')
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div class="rounded border border-[#e3e3e0] bg-white p-4 shadow-sm">
-            <div class="text-sm text-[#706f6c]">Products</div>
+            <div class="text-sm text-[#706f6c]">{{ __('messages.general.products') }}</div>
             <div class="text-2xl font-semibold">{{ $stats['products'] }}</div>
         </div>
         <div class="rounded border border-[#e3e3e0] bg-white p-4 shadow-sm">
-            <div class="text-sm text-[#706f6c]">Customers</div>
+            <div class="text-sm text-[#706f6c]">{{ __('messages.general.customers') }}</div>
             <div class="text-2xl font-semibold">{{ $stats['customers'] }}</div>
         </div>
         <div class="rounded border border-[#e3e3e0] bg-white p-4 shadow-sm">
-            <div class="text-sm text-[#706f6c]">Sales</div>
+            <div class="text-sm text-[#706f6c]">{{ __('messages.general.sales') }}</div>
             <div class="text-2xl font-semibold">{{ $stats['sales'] }}</div>
         </div>
         <div class="rounded border border-[#e3e3e0] bg-white p-4 shadow-sm">
-            <div class="text-sm text-[#706f6c]">Revenue</div>
+            <div class="text-sm text-[#706f6c]">{{ __('messages.general.revenue') }}</div>
             <div class="text-2xl font-semibold">${{ number_format($stats['revenue'], 2) }}</div>
         </div>
     </div>
@@ -25,16 +25,17 @@
     <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div class="lg:col-span-2 rounded border border-[#e3e3e0] bg-white p-4">
             <div class="flex items-center justify-between">
-                <h2 class="font-medium">Recent Sales</h2>
-                <a href="{{ route('sales.index') }}" class="text-[#f53003] underline">View all</a>
+                <h2 class="font-medium">{{ __('messages.general.recent_sales') }}</h2>
+                <a href="{{ route('sales.index') }}"
+                    class="text-[#f53003] underline">{{ __('messages.general.view_all') }}</a>
             </div>
             <div class="mt-3 overflow-x-auto">
                 <table class="w-full text-sm">
                     <thead>
                         <tr class="text-left text-[#706f6c]">
-                            <th class="py-2">Date</th>
-                            <th class="py-2">Customer</th>
-                            <th class="py-2">Total</th>
+                            <th class="py-2">{{ __('messages.general.date') }}</th>
+                            <th class="py-2">{{ __('messages.general.customers') }}</th>
+                            <th class="py-2">{{ __('messages.general.total') }}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -42,15 +43,17 @@
                         @forelse ($recentSales as $sale)
                             <tr class="border-t">
                                 <td class="py-2">{{ $sale->date->format('Y-m-d') }}</td>
-                                <td class="py-2">{{ $sale->customer->name ?? 'Walk-in' }}</td>
+                                <td class="py-2">{{ $sale->customer->name ?? __('messages.general.walk_in') }}</td>
                                 <td class="py-2">${{ number_format($sale->total, 2) }}</td>
                                 <td class="py-2 text-right">
-                                    <a href="{{ route('sales.show', $sale) }}" class="text-[#f53003] underline">Details</a>
+                                    <a href="{{ route('sales.show', $sale) }}"
+                                        class="text-[#f53003] underline">{{ __('messages.general.details') }}</a>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4" class="py-4 text-center text-[#706f6c]">No sales yet.</td>
+                                <td colspan="4" class="py-4 text-center text-[#706f6c]">
+                                    {{ __('messages.general.no_sales_yet') }}</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -59,8 +62,8 @@
         </div>
         <div class="rounded border border-[#e3e3e0] bg-white p-4" x-data="{ open: true }">
             <div class="flex items-center justify-between">
-                <h2 class="font-medium">Low Stock</h2>
-                <button @click="open = !open" class="text-sm text-[#706f6c]">Toggle</button>
+                <h2 class="font-medium">{{ __('messages.general.low_stock') }}</h2>
+                <button @click="open = !open" class="text-sm text-[#706f6c]">{{ __('messages.general.toggle') }}</button>
             </div>
             <ul class="mt-3 space-y-2" x-show="open" x-transition>
                 @forelse ($lowStock as $p)
@@ -69,7 +72,7 @@
                         <span class="text-[#f53003]">{{ $p->stock }}</span>
                     </li>
                 @empty
-                    <li class="text-[#706f6c] text-sm">All good!</li>
+                    <li class="text-[#706f6c] text-sm">{{ __('messages.general.all_good') }}</li>
                 @endforelse
             </ul>
         </div>

@@ -41,6 +41,10 @@
                     class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.pl') }}</a>
                 <a href="{{ route('accounting.entries.index') }}"
                     class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.journal_entries') }}</a>
+                <a href="{{ route('cashiers.index') }}"
+                    class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.cashier.title') }}</a>
+                <a href="{{ route('vouchers.index') }}"
+                    class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.voucher.title') }}</a>
                 <div class="text-xs uppercase text-[#706f6c] px-3 mt-4">{{ __('messages.general.administration') }}
                 </div>
                 <a href="{{ route('branches.index') }}"
@@ -96,6 +100,10 @@
                         class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.pl') }}</a>
                     <a href="{{ route('accounting.entries.index') }}"
                         class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.journal_entries') }}</a>
+                    <a href="{{ route('cashiers.index') }}"
+                        class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.cashier.title') }}</a>
+                    <a href="{{ route('vouchers.index') }}"
+                        class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.voucher.title') }}</a>
                     <a href="{{ route('branches.index') }}"
                         class="block px-3 py-2 rounded hover:bg-[#fff2f2]">{{ __('messages.general.branches') }}</a>
                 </nav>
