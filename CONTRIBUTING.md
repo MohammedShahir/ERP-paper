@@ -10,11 +10,11 @@ Thanks for your interest in contributing! To keep the codebase stable:
 
 ## Development
 
-- PHP/Laravel
-- Node + Vite for assets
-- Run DB migrations locally: `php artisan migrate`
+-   PHP/Laravel
+-   Node + Vite for assets
+-   Run DB migrations locally: `php artisan migrate`
 
 ## Code style
 
-- Prefer readability and small functions.
-- Keep controllers thin; move logic into models/services where reasonable.
+-   Prefer readability and small functions.
+-   Keep controllers thin; move logic into models/services where reasonable.
